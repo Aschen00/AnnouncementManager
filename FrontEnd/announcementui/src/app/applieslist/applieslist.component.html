@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="text-center">
+        <img src="https://us.123rf.com/450wm/yupiramos/yupiramos1905/yupiramos190513885/122581245-presse-papiers-de-la-liste-de-contr%C3%B4le-avec-la-conception-d-illustration-vectorielle-de-stylo.jpg?ver=6" class="rounded">
+      </div>
+    
+    <table id="customers">
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor=" let apply of applyinfos">
+          <td>{{apply.fullName}}</td>
+          <td>{{apply.email}}</td>
+          <td><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="viewApplies(apply)"> View </button>&nbsp;
+              <button class="btn btn-danger" (click)="deleteApply(apply)" > Delete </button></td>
+          
+        </tr>
+      </table>
+
+
+      <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Applies Infos </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #viewForm="ngForm" (ngSubmit)="viewApplies(viewForm)">
+            <div class="form-group">
+              <label for="fullName"> Full Name :</label>
+              <input type="text" #fullName [(ngModel)]="applyToUpdate.fullName" name="fullName" id="fullName" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+              <label for="email"> Email :</label>
+              <input type="text" #email [(ngModel)]="applyToUpdate.email" name="email" id="email" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+              <label for="phone"> Phone Number :</label>
+              <input type="text" #phone [(ngModel)]="applyToUpdate.phone" name="phone" id="phone" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+              <label for="languages"> Languages :</label>
+              <textarea type="text" #languages [(ngModel)]="applyToUpdate.languages" name="languages" id="languages" class="form-control" rows="3" readonly></textarea>
+            </div>
+            <div class="form-group">
+              <label for="experiences"> Experiences :</label>
+              <textarea type="text" #experiences [(ngModel)]="applyToUpdate.experiences" name="experiences" id="experiences" class="form-control" rows="5" placeholder=" Including dates " readonly></textarea>
+            </div>
+            <div class="form-group">
+              <label for="education"> Education :</label>
+              <textarea type="text" #education [(ngModel)]="applyToUpdate.education" name="education" id="education" class="form-control" rows="3" placeholder=" Including dates " readonly></textarea>
+            </div>
+            <div class="form-group">
+              <label for="skills"> Skills :</label>
+              <textarea type="text" #skills [(ngModel)]="applyToUpdate.skills" name="skills" id="skills" class="form-control" rows="3" readonly></textarea>
+            </div>
+            <div class="form-group">
+              <label for="about"> About You :</label>
+              <textarea type="text" #about [(ngModel)]="applyToUpdate.about" name="about" id="about" class="form-control" rows="3" readonly></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>

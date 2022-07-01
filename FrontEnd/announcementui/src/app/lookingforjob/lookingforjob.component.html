@@ -1,0 +1,114 @@
+<div class="container">
+<div class="text-center">
+    <img src="https://getfive.com/wp-content/uploads/2019/08/job-searching-700x400.jpg" class="rounded">
+  </div>
+
+<table id="customers">
+    <tr>
+      <th>Job Title</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor=" let announcement of announcementDetails">
+      <td>{{announcement.jobTitle}}</td>
+      <td>{{announcement.email}}</td>
+      <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="viewAnnouncement(announcement)"> View </button>&nbsp;
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="viewAnnouncement(announcement)"> Apply </button></td>
+      
+    </tr>
+  </table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel"> Job Applying </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form #applyForm="ngForm" (ngSubmit)="applyJob(applyForm)">
+        <div class="form-group">
+          <label for="fullName"> Full Name :</label>
+          <input type="text" #fullName (ngModel)="fullName" name="fullName" id="fullName" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email"> Email :</label>
+          <input type="text" #email (ngModel)="email" name="email" id="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="phone"> Phone Number :</label>
+          <input type="text" #phone (ngModel)="phone" name="phone" id="phone" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="languages"> Languages :</label>
+          <textarea type="text" #languages (ngModel)="languages" name="languages" id="languages" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="experiences"> Experiences :</label>
+          <textarea type="text" #experiences (ngModel)="experiences" name="experiences" id="experiences" class="form-control" rows="5" placeholder=" Including dates "></textarea>
+        </div>
+        <div class="form-group">
+          <label for="education"> Education :</label>
+          <textarea type="text" #education (ngModel)="education" name="education" id="education" class="form-control" rows="3" placeholder=" Including dates "></textarea>
+        </div>
+        <div class="form-group">
+          <label for="skills"> Skills :</label>
+          <textarea type="text" #skills (ngModel)="skills" name="skills" id="skills" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="about"> About You :</label>
+          <textarea type="text" #about (ngModel)="about" name="about" id="about" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" value=" Apply to the job " class="btn btn-primary w-100">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> View Announcement </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="id">Announcement ID :</label>
+            <input type="text" #jobTitle [(ngModel)]="announcementToUpdate.id" name="id" id="id" class="form-control" readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="id">Company Name :</label>
+            <input type="text" #companyName [(ngModel)]="announcementToUpdate.companyName" name="companyName" id="companyName" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="id">Company Email :</label>
+            <input type="text" #email [(ngModel)]="announcementToUpdate.email" name="email" id="email" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label for="jobTitle">Job Title :</label>
+            <input type="text" #jobTitle [(ngModel)]="announcementToUpdate.jobTitle" name="jobTitle" id="jobTitle" class="form-control" placeholder=" Job Title" readonly>
+          </div>
+          <div class="form-group">
+            <label for="description">Job Description :</label>
+            <textarea #description [(ngModel)]="announcementToUpdate.description" name="description" id="description" class="form-control" rows="8" placeholder=" About the job " readonly></textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<router-outlet></router-outlet>

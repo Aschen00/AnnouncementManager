@@ -1,0 +1,82 @@
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+
+
+
+  .button1 {
+    background-color: #f4511e;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .button1:hover {
+    opacity: 1 
+  }
+
+  .button2 {
+    background-color: #066e75;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .button2:hover {
+    opacity: 1 
+  }
+
+  .button3 {
+    background-color: #13af13;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .button3:hover {
+    opacity: 1 
+  }

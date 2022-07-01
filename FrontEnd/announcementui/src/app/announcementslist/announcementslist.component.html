@@ -1,0 +1,88 @@
+<div class="container">
+<div class="card mt-5" style="padding: 20px;">
+    <form #addForm="ngForm" (ngSubmit)="addAnnounce(addForm)">
+      <div class="form-group">
+        <label for="jobTitle">Job Title :</label>
+        <input type="text" #jobTitle (ngModel)="jobTitle" name="jobTitle" id="jobTitle" class="form-control" placeholder=" Job Title">
+      </div>
+      <div class="form-group">
+        <label for="companyName">Company Name :</label>
+        <input type="text" #companyName (ngModel)="companyName" name="companyName" id="companyName" class="form-control" placeholder=" Company Name">
+      </div>
+      <div class="form-group">
+        <label for="email">Company Email :</label>
+        <input type="text" #email (ngModel)="email" name="email" id="email" class="form-control" placeholder=" Company Email">
+      </div>
+      <div class="form-group">
+        <label for="description">Job Description :</label>
+        <textarea #description (ngModel)="description" name="description" id="description" class="form-control" rows="8" placeholder=" About the job "></textarea>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Add new announcement" class="btn btn-primary w-100">
+      </div>
+    </form>
+  </div>
+
+
+    <table id="customers">
+      <tr>
+        <th>Job Title</th>
+        <th>Company Name</th>
+        <th>Company Email</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor=" let announcement of announcementDetails">
+        <td>{{announcement.jobTitle}}</td>
+        <td>{{announcement.companyName}}</td>
+        <td>{{announcement.email}}</td>
+        <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateAnnouncement(announcement)"> Edit </button>&nbsp;
+            <button class="btn btn-danger" (click)="deleteAnnouncement(announcement)"> Delete </button></td>
+        
+      </tr>
+    </table>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Edit Announcement </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="updateAnnouncementOn()">
+          <div class="form-group">
+            <label for="id">Announcement ID :</label>
+            <input type="text" #id [(ngModel)]="announcementToUpdate.id" name="id" id="id" class="form-control" readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="companyName">Company Name :</label>
+            <input type="text" #companyName [(ngModel)]="announcementToUpdate.companyName" name="companyName" id="companyName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="email">Company Email :</label>
+            <input type="text" #email [(ngModel)]="announcementToUpdate.email" name="email" id="email" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="jobTitle">Job Title :</label>
+            <input type="text" #jobTitle [(ngModel)]="announcementToUpdate.jobTitle" name="jobTitle" id="jobTitle" class="form-control" placeholder=" Job Title">
+          </div>
+          <div class="form-group">
+            <label for="description">Job Description :</label>
+            <textarea #description [(ngModel)]="announcementToUpdate.description" name="description" id="description" class="form-control" rows="8" placeholder=" About the job "></textarea>
+              
+          </div>
+          <div class="form-group">
+            <input type="submit" value=" Update announcement " class="btn btn-primary w-100">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
